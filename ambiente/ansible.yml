@@ -10,3 +10,4 @@
     - name: exibe resultado
       debug: 
         msg: "{{ resultado }}"
+
