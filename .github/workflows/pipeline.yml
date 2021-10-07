@@ -19,3 +19,4 @@ jobs:
       with:
         name: deploy
         path: frontend/build
+    - run: aws s3 cp frontend/build s3://devops-wapj --recursive --acl public-read
