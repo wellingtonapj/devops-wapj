@@ -28,7 +28,7 @@
       tags:
         Name: "{{ vpc_name }}"
     register: vpc_result
-    
+
   - name: Criação de subnet
     ec2_vpc_subnet:
       region: "{{ aws_region }}"
@@ -39,7 +39,7 @@
       tags:
         Name: "{{ subnet_name }}"
     register: subnet_result
-    
+
   - name: Criação de internet gateway       
     ec2_vpc_igw:
       region: "{{ aws_region }}"
@@ -47,14 +47,14 @@
       tags:
         Name: "{{ igw_name }}"
     register: igw_result
-    
+
   - name: Criação de route table
     ec2_vpc_route_table:
       region: "{{ aws_region }}"
       vpc_id: "{{ vpc_result.vpc.id }}"      
       subnets: [ "{{ subnet_result.subnet.id }}" ]
       tags:
-        name: "{{ route_table_name }}"
+        Name: "{{ route_table_name }}"
       routes:
         - dest: "{{ destinationCidrBlock }}" 
           gateway_id: "{{ igw_result.gateway_id }}"      
@@ -80,8 +80,8 @@
         cidr_ip: "{{ port80CidrBlock }}"
         rule_desc: allow all on port 80
     register: security_group_result
-    
-  - name: Registro do id da subnet
+
+  - name: Registro do id da subrede
     add_host:
       name: "virtual_host"
-      subnet_id: "{{ subnet_result.subnet.id }}"
+      subnet_id: "{{ subnet_result.subnet.id }}" 
