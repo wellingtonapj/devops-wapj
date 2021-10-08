@@ -1,15 +1,11 @@
 ---
-- name: Criação de VPC, Subnet, Internet gateway, Route table, Security group
-  hosts: localhost
-  connection: local
-  gather_facts: false
-  become: true
-  vars_files:
-    - vars/global.yml
-    - vars/vpc.yml
-    
-environment:
-    AWS_ACCESS_KEY_ID: "{{ lookup('env', 'AWS_ACCESS_KEY_ID') }}"
-    AWS_SECRET_ACCESS_KEY: "{{ lookup('env', 'AWS_SECRET_ACCESS_KEY') }}"
-    AWS_SESSION_TOKEN: "{{ lookup('env', 'AWS_SESSION_TOKEN') }}"
-     
+vpc_name: "{{ project_name }}-vpc"
+subnet_name: "{{ project_name }}-subnet"
+igw_name: "{{ project_name }}-igw"
+route_table_name: "{{ project_name }}-route-table"
+vpcCidrBlock: '10.0.0.0/16'
+subNetCidrBlock: '10.0.0.0/24'
+port22CidrBlock: '0.0.0.0/0'
+port80CidrBlock: '0.0.0.0/0'
+destinationCidrBlock: '0.0.0.0/0'
+security_group_name: "{{ project_name }}-security-group"
