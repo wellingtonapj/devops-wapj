@@ -58,7 +58,7 @@
   - name: Criação de security group
     ec2_group:
       region: "{{ aws_region }}"
-vpc_id: "{{ vpc_result.vpc.id }}"
+      vpc_id: "{{ vpc_result.vpc.id }}"
       name: "{{ security_group_name }}"
       description: "{{ security_group_name }}"
       tags:
