@@ -1,5 +1,5 @@
 ---
-project_name: devops-cyo
+project_name: devops-wapj
 provider: aws
 aws_region: us-east-1
 aws_availability_zone: us-east-1a
