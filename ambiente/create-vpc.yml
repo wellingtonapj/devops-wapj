@@ -26,5 +26,5 @@
       dns_hostnames: yes
       tenancy: default
       tags:
-        Name: "{{ vpc_name }}"
+       Name: "{{ vpc_name }}"
     register: vpc_result
