@@ -26,7 +26,7 @@
       dns_hostnames: yes
       tenancy: default
       tags:
-       Name: "{{ vpc_name }}"
+      Name: "{{ vpc_name }}"
     register: vpc_result
     
   - name: Criação de subnet
@@ -37,7 +37,7 @@
       cidr: "{{ subNetCidrBlock }}"
       map_public: yes
       tags:
-        Name: "{{ subnet_name }}"
+      Name: "{{ subnet_name }}"
     register: subnet_result
     
   - name: Criação de internet gateway       
@@ -45,7 +45,7 @@
       region: "{{ aws_region }}"
       vpc_id: "{{ vpc_result.vpc.id }}"      
       tags:
-        Name: "{{ igw_name }}"
+      Name: "{{ igw_name }}"
     register: igw_result
     
   - name: Criação de route table
@@ -54,7 +54,7 @@
       vpc_id: "{{ vpc_result.vpc.id }}"      
       subnets: [ "{{ subnet_result.subnet.id }}" ]
       tags:
-        Name: "{{ route_table_name }}"
+      name: "{{ route_table_name }}"
       routes:
         - dest: "{{ destinationCidrBlock }}" 
           gateway_id: "{{ igw_result.gateway_id }}"      
