@@ -29,7 +29,7 @@
         mode: 0600
       when: existing_ec2_key_result.msg == "key pair already exists"
       register: private_key
-- name: Criação de pares de chave
+   - name: Criação de pares de chave
       community.crypto.openssh_keypair:
         path: "{{ playbook_dir }}/{{ access_key }}"
         size: 4096
@@ -46,3 +46,15 @@
         key_material: "{{ keypair_result.public_key }}"
         force: yes
       when: existing_ec2_key_result.msg != "key pair already exists"
+      - name: Mudança de permissão do arquivo com a private key
+      ansible.builtin.file:
+        path: "{{ arquivo }}"
+        mode: '0644'
+      vars:
+        arquivo: "{{ playbook_dir }}/{{ access_key }}"      
+
+    - name: Carregamento da chave privada para memória
+      set_fact:
+        private_key_result: "{{ lookup('file', arquivo) }}"
+      vars:
+        arquivo: "{{ playbook_dir }}/{{ access_key }}"
