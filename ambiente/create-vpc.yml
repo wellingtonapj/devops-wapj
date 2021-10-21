@@ -38,3 +38,10 @@
       tags:
         Name: "{{ subnet_name }}"
     register: subnet_result
+    - name: Criação de internet gateway       
+    ec2_vpc_igw:
+      region: "{{ aws_region }}"
+      vpc_id: "{{ vpc_result.vpc.id }}"      
+      tags:
+        Name: "{{ igw_name }}"
+    register: igw_result
