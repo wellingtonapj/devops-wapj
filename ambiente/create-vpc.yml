@@ -45,3 +45,14 @@
       tags:
         Name: "{{ igw_name }}"
     register: igw_result
+    - name: Criação de route table
+    ec2_vpc_route_table:
+      region: "{{ aws_region }}"
+      vpc_id: "{{ vpc_result.vpc.id }}"      
+      subnets: [ "{{ subnet_result.subnet.id }}" ]
+      tags:
+        Name: "{{ route_table_name }}"
+      routes:
+        - dest: "{{ destinationCidrBlock }}" 
+          gateway_id: "{{ igw_result.gateway_id }}"      
+    register: public_route_table
