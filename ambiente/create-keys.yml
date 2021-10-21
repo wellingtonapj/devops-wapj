@@ -67,4 +67,3 @@
         region: "{{ aws_region }}"
       when: existing_ec2_key_result.msg != "key pair already exists"
       register: secret_manager_result
-      
