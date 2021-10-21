@@ -9,12 +9,3 @@ port22CidrBlock: '0.0.0.0/0'
 port80CidrBlock: '0.0.0.0/0'
 destinationCidrBlock: '0.0.0.0/0'
 security_group_name: "{{ project_name }}-security-group"
----
-- name: Criação de VPC, Subnet, Internet gateway, Route table, Security group
-  hosts: localhost
-  connection: local
-  gather_facts: false
-  become: true
-  vars_files:
-    - vars/global.yml
-    - vars/vpc.yml
