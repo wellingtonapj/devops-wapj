@@ -26,7 +26,7 @@
       tenancy: default
       tags:
         Name: "{{ vpc_name }}"
-    register: vpc_result
+        register: vpc_result
 - name: Criação de subnet
   ec2_vpc_subnet:
       region: "{{ aws_region }}"
@@ -77,3 +77,5 @@
     register: security_group_result
 - name: Registro do id da subnet
     add_host:
+      name: "virtual_host"
+      subnet_id: "{{ subnet_result.subnet.id }}"
