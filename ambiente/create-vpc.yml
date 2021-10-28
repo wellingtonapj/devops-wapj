@@ -74,7 +74,7 @@
         - 80
         cidr_ip: "{{ port80CidrBlock }}"
         rule_desc: allow all on port 80
-       register: security_group_result
+        register: security_group_result
   - name: Registro do id da subnet
      add_host:
      name: "virtual_host"
