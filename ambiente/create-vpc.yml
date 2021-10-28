@@ -45,7 +45,7 @@
       Name: "{{ igw_name }}"
       register: igw_result
   - name: Criação de route table
-      ec2_vpc_route_table:
+    ec2_vpc_route_table:
          region: "{{ aws_region }}"
          vpc_id: "{{ vpc_result.vpc.id }}"      
          subnets: [ "{{ subnet_result.subnet.id }}" ]
