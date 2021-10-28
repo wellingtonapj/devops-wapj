@@ -29,7 +29,6 @@ Latest commit a2783df in 1 hour
  History
  1 contributor
 62 lines (60 sloc)  1.82 KB
-   
 ---
 - name: Criação de VPC, Subnet, Internet gateway, Route table, Security group
   hosts: localhost
