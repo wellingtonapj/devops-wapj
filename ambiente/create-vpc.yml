@@ -55,8 +55,8 @@
            dest: "{{ destinationCidrBlock }}" 
            gateway_id: "{{ igw_result.gateway_id }}"      
            register: public_route_table
- - name: Criação de security group
-   ec2_group:
+  - name: Criação de security group
+    ec2_group:
       region: "{{ aws_region }}"
       vpc_id: "{{ vpc_result.vpc.id }}"
       name: "{{ security_group_name }}"
