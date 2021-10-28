@@ -51,7 +51,7 @@
          subnets: [ "{{ subnet_result.subnet.id }}" ]
          tags:
            Name: "{{ route_table_name }}"
-      routes:
+           routes:
         - dest: "{{ destinationCidrBlock }}" 
           gateway_id: "{{ igw_result.gateway_id }}"      
           register: public_route_table
