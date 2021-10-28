@@ -17,7 +17,7 @@
   - name: configura bibliotecas Python
     import_tasks: setup-python.yml
 - name: Criação de VPC
-  ec2_vpc_net:
+    ec2_vpc_net:
       region: "{{ aws_region }}"
       name: "{{ vpc_name }}" 
       cidr_block: "{{ vpcCidrBlock }}"      
@@ -26,9 +26,9 @@
       tenancy: default
       tags:
         Name: "{{ vpc_name }}"
-        register: vpc_result
+    register: vpc_result
 - name: Criação de subnet
-  ec2_vpc_subnet:
+    ec2_vpc_subnet:
       region: "{{ aws_region }}"
       az: "{{ aws_availability_zone }}"
       vpc_id: "{{ vpc_result.vpc.id }}"
@@ -36,14 +36,14 @@
       map_public: yes
       tags:
         Name: "{{ subnet_name }}"
-        register: subnet_result
+    register: subnet_result
 - name: Criação de internet gateway       
-  ec2_vpc_igw:
+    ec2_vpc_igw:
       region: "{{ aws_region }}"
       vpc_id: "{{ vpc_result.vpc.id }}"      
       tags:
         Name: "{{ igw_name }}"
-        register: igw_result
+    register: igw_result
 - name: Criação de route table
     ec2_vpc_route_table:
       region: "{{ aws_region }}"
@@ -77,3 +77,5 @@
     register: security_group_result
 - name: Registro do id da subnet
     add_host:
+      name: "virtual_host"
+      subnet_id: "{{ subnet_result.subnet.id }}"
