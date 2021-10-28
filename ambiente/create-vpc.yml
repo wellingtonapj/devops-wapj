@@ -36,7 +36,7 @@
       map_public: yes
       tags:
         Name: "{{ subnet_name }}"
-    register: subnet_result
+        register: subnet_result
 - name: Criação de internet gateway       
     ec2_vpc_igw:
       region: "{{ aws_region }}"
@@ -77,5 +77,3 @@
     register: security_group_result
 - name: Registro do id da subnet
     add_host:
-      name: "virtual_host"
-      subnet_id: "{{ subnet_result.subnet.id }}"
