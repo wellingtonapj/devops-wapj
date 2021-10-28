@@ -56,7 +56,7 @@
            gateway_id: "{{ igw_result.gateway_id }}"      
            register: public_route_table
   - name: Criação de security group
-   - name: Registro do id da subnet
-     add_host:
+       - name: Registro do id da subnet
+      add_host:
       name: "virtual_host"
       subnet_id: "{{ subnet_result.subnet.id }}"
