@@ -55,8 +55,27 @@
            dest: "{{ destinationCidrBlock }}" 
            gateway_id: "{{ igw_result.gateway_id }}"      
            register: public_route_table
-  - name: Criação de security group
-  - name: Registro do id da subnet
-    add_host:
-     name: "virtual_host"
-     subnet_id: "{{ subnet_result.subnet.id }}"
+ - name: Criação de security group
+    ec2_group:
+      region: "{{ aws_region }}"
+      vpc_id: "{{ vpc_result.vpc.id }}"
+      name: "{{ security_group_name }}"
+      description: "{{ security_group_name }}"
+      tags:
+        Name: "{{ security_group_name }}"
+      rules:
+      - proto: tcp
+        ports:
+        - 22
+        cidr_ip: "{{ port22CidrBlock }}"
+        rule_desc: allow all on port 22
+      - proto: tcp
+        ports:
+        - 80
+        cidr_ip: "{{ port80CidrBlock }}"
+        rule_desc: allow all on port 80
+    register: security_group_result
+ - name: Registro do id da subnet
+   add_host:
+    name: "virtual_host"
+    subnet_id: "{{ subnet_result.subnet.id }}"
