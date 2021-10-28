@@ -42,8 +42,8 @@
          region: "{{ aws_region }}"
          vpc_id: "{{ vpc_result.vpc.id }}"      
          tags:
-      Name: "{{ igw_name }}"
-      register: igw_result
+           Name: "{{ igw_name }}"
+        register: igw_result
   - name: Criação de route table
     ec2_vpc_route_table:
          region: "{{ aws_region }}"
