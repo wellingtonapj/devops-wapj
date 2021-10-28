@@ -17,7 +17,7 @@
   - name: configura bibliotecas Python
     import_tasks: setup-python.yml
   - name: Criação de VPC
-  ec2_vpc_net:
+    ec2_vpc_net:
       region: "{{ aws_region }}"
       name: "{{ vpc_name }}" 
       cidr_block: "{{ vpcCidrBlock }}"      
