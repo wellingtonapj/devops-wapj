@@ -1,35 +1,4 @@
-Skip to content
-Search or jump to…
-Pull requests
-Issues
-Marketplace
-Explore
- 
-@wellingtonapj 
-wellingtonapj
-/
-devops-wapj
-Public
-1
-10
-Code
-Issues
-Pull requests
-1
-Actions
-Projects
-Wiki
-Security
-Insights
-Settings
-devops-wapj/ambiente/create-vpc.yml
-@wellingtonapj
-wellingtonapj vpc name
-Latest commit a2783df in 1 hour
- History
- 1 contributor
-62 lines (60 sloc)  1.82 KB
----
+--- 
 - name: Criação de VPC, Subnet, Internet gateway, Route table, Security group
   hosts: localhost
   connection: local
