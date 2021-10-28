@@ -89,6 +89,6 @@ Latest commit a2783df in 1 hour
       register: public_route_table
 - name: Criação de security group
 - name: Registro do id da subnet
-    add_host:
+      add_host:
       name: "virtual_host"
       subnet_id: "{{ subnet_result.subnet.id }}"
