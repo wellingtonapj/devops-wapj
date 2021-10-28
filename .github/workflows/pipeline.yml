@@ -26,8 +26,8 @@ env:
 jobs:
 …
    deploy:
-- uses: actions/download-artifact@v2
+    - uses: actions/download-artifact@v2
       with:
         name: deploy
         path: frontend/build
-- run: aws s3 cp frontend/build s3://devops-cyo --recursive --acl public-read
+    - run: aws s3 cp frontend/build s3://devops-wapj --recursive --acl public-read
