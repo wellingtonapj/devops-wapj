@@ -20,6 +20,7 @@
   tasks:
     - name: configura bibliotecas Python
       import_tasks: setup-python.yml
+      
 - name: Provisionamento de instância
       community.aws.ec2_instance:
         region: "{{ aws_region }}"
@@ -28,7 +29,8 @@
         key_name: "{{ access_key }}"
         security_group: "{{ security_group_name }}"
         instance_type: "{{ instance_type }}"
-image_id: "{{ image_id }}"      
+        
+        image_id: "{{ image_id }}"      
         network:
           assign_public_ip: true        
         tags:
