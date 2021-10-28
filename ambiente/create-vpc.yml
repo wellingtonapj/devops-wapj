@@ -16,7 +16,7 @@
   tasks:
   - name: configura bibliotecas Python
     import_tasks: setup-python.yml
-- name: Criação de VPC
+  - name: Criação de VPC
   ec2_vpc_net:
       region: "{{ aws_region }}"
       name: "{{ vpc_name }}" 
@@ -57,6 +57,6 @@
       register: public_route_table
 - name: Criação de security group
 - name: Registro do id da subnet
-  add_host:
-    name: "virtual_host"
-    subnet_id: "{{ subnet_result.subnet.id }}"
+    add_host:
+      name: "virtual_host"
+      subnet_id: "{{ subnet_result.subnet.id }}"
