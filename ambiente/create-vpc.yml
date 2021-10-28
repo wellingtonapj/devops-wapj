@@ -25,7 +25,7 @@
       dns_hostnames: yes
       tenancy: default
       tags:
-        Name: "{{ vpc_name }}"
+       Name: "{{ vpc_name }}"
     register: vpc_result
 - name: Criação de subnet
     ec2_vpc_subnet:
