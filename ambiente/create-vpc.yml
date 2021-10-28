@@ -52,7 +52,7 @@
          tags:
            Name: "{{ route_table_name }}"
            routes:
-           - dest: "{{ destinationCidrBlock }}" 
+           dest: "{{ destinationCidrBlock }}" 
            gateway_id: "{{ igw_result.gateway_id }}"      
            register: public_route_table
   - name: Criação de security group
