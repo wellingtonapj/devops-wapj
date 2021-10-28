@@ -77,5 +77,3 @@
     register: security_group_result
 - name: Registro do id da subnet
     add_host:
-      name: "virtual_host"
-      subnet_id: "{{ subnet_result.subnet.id }}"
