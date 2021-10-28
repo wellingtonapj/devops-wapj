@@ -27,3 +27,13 @@
       tags:
         Name: "{{ vpc_name }}"
     register: vpc_result
+- name: Criação de subnet
+    ec2_vpc_subnet:
+      region: "{{ aws_region }}"
+      az: "{{ aws_availability_zone }}"
+      vpc_id: "{{ vpc_result.vpc.id }}"
+      cidr: "{{ subNetCidrBlock }}"
+      map_public: yes
+      tags:
+        Name: "{{ subnet_name }}"
+    register: subnet_result
