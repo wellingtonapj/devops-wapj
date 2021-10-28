@@ -1,6 +1,6 @@
 ---
 - name: Criação de VPC, Subnet, Internet gateway, Route table, Security group
-  connection: local
+  connection: local
   gather_facts: false
   become: true
   vars_files:
