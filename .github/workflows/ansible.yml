@@ -1,10 +1,12 @@
-name: Ansible
+---
+- name: Testa os managed nodes
+  hosts: localhost
 
-on:
-  workflow_dispatch
-
-jobs:
-  ansible-version:
-    runs-on: ubuntu-latest
-    steps:
-    - run: ansible --version
+  tasks:
+    - name: executa ping 
+      ping:
+      register: resultado
+      
+    - name: exibe resultado
+      debug: 
+        msg: "{{ resultado }}"
